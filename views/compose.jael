@@ -1,0 +1,26 @@
+<extend src="layout.jael">
+   <block name="content">
+      <script>
+      </script>
+      <h1>Compose</h1>
+      <p if=error != null style="color: red; font-style: italic; margin-bottom: 2em;">{{ error }}</p>
+      <p if=in_reply_to != null><b>In response to <a href="/post/" + in_reply_to>post #{{ in_reply_to }}</a>:</b></p>
+      <form action="/compose" method="post" enctype="multipart/form-data">
+        <input if=in_reply_to != null name="in_reply_to" type="hidden" value=in_reply_to />
+        <input name="meta" type="hidden" value=meta />
+        <label for="user_hash">(Optional) User hash password:</label>
+        <br>
+        <input id="user_hash" placeholder="Unforgeable anonymous identifier" name="user_hash" type="text" style="width: 100%">
+        <br><br>
+        <label for="attachments">Attachments:</label>
+        <br>
+        <input id="attachments" multiple=true name="attachments" type="file">
+        <br><br>
+        <label for="text">Post contents:</label>
+        <br>
+        <textarea id="text" name="text" placeholder="Say something (supports Markdown)..." rows="15" style="width: 100%"></textarea>
+        <br><br>
+        <input type="submit" value="Submit">
+      </form>
+   </block>
+</extend>

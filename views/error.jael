@@ -1,0 +1,6 @@
+<extend src="layout.jael">
+    <block name="content">
+        <h1>Something went wrong.</h1>
+        <p>{{ message }}</p>
+    </block>
+</extend>

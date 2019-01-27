@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title ?? 'dchan' }} | dchan</title>
+    <style>
+        label {
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/">dchan</a>
+        <span style="flex: 1"></span>
+        <a href="/compose">Compose</a>
+    </nav>
+</header>
+<block name="content"></block>
+</body>
+</html>

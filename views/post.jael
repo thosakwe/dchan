@@ -1,0 +1,43 @@
+<extend src="layout.jael">
+    <block name="content">
+        <element name="post-item">
+           <div id="comment-" + post.id>
+            <p if=post.userHash != null><i>Posted by: <a href="/user/" + post.userHash>{{ post.userHash }}</a></i></p>
+            <p><i>Posted at: <a href="#comment-" + post.id>{{ post.createdAt }}</a></i></p>
+           </div>
+           <div if=post.text.isNotEmpty>{{- md(post.text) }}</div>
+           <attachment-item for-each=post.attachments if=item.sizeInBytes != 0 @attachment=item></attachment-item>
+           <hr>
+        </element>
+        <element name="attachment-item">
+            <declare a=attachment link="/" + attachment.path>
+               <b> {{ a.filename }} ({{ a.size }})</b>
+               <br>
+               <switch value=a.contentType.type>
+                    <case value="image">
+                        <a target="_blank" href=link>
+                            <img style="max-height: 5em" if=a.contentType.type == "image" src=link>
+                        </a>
+                    </case>
+                    <case value="audio">
+                        <audio controls=true style="max-height: 15em" if=a.contentType.type == "audio" src=link></audio>
+                    </case>
+                    <case value="video">
+                        <video controls=true style="max-height: 15em"  if=a.contentType.type == "video" src=link></video>
+                    </case>
+                    <default>
+                        <a href=link>Download</a>
+                    </default>
+                </switch>
+                <br><br>
+            </declare>
+        </element>
+        <h1>Post #{{ post.id }}</h1>
+        <post-item @post=post></post-item>
+        <post-item for-each=comments @post=item></post-item>
+        <div>
+            <p><b>Got something to say?</b></p>
+            <p><a href="/compose/?in_reply_to=" + post.id>Post a Reply</a></p>
+        </div>
+    </block>
+</extend>

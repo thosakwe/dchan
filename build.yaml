@@ -1,0 +1,9 @@
+targets:
+  _a:
+    sources:
+      - lib/src/models/attachment.dart
+  $default:
+    dependencies:
+      - :_a
+    sources:
+      - lib/src/models/post.dart

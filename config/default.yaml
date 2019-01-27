@@ -1,0 +1,5 @@
+# Default server configuration.
+postgres:
+  database_name: dchan
+  username: postgres
+  password: postgres

@@ -1,0 +1,12 @@
+<extend src="layout.jael">
+   <block name="content">
+      <h1>{{ heading ?? 'Board Index' }}</h1>
+      <i if=posts.isEmpty>Board is empty</i>
+      <ul for-each=posts as="post">
+         <li>
+            <a if=post.inReplyTo == -1 href="/post/" + post.id>{{ post.text }}</a>
+            <a if=post.inReplyTo != -1 href="/post/" + post.inReplyTo + "/#comment" + post.id>{{ post.text }}</a>
+         </li>
+      </ul>
+   </block>
+</extend>
