@@ -1,6 +1,8 @@
 # dchan
 Simple, anonymous text/multimedia board. (Angel example)
 
+![screenshot](screenshots/screenshot.png)
+
 Supports:
 * Markdown
 * Uploads
